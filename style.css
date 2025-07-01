@@ -108,7 +108,7 @@ body {
     gap: 15px;
 }
 .medium-right .item-image {
-    width: 90%;
+    width: 25%;
     height: auto;
     display: block; /* Loại bỏ khoảng trắng dưới ảnh */
     border-top-left-radius: var(--card-radius); /* Bo góc trên */
