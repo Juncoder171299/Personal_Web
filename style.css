@@ -1,0 +1,296 @@
+/* Biến CSS cho màu sắc chính, giúp dễ dàng thay đổi sau này */
+:root {
+    --primary-green: #5C8C58; /* Màu xanh lá cây đậm hơn từ hình */
+    --light-green: #8CC08C; /* Màu xanh lá cây nhạt hơn */
+    --text-dark: #333;
+    --text-light: #fff;
+    --card-radius: 15px;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif; /* Hoặc font bạn muốn, ví dụ: 'Roboto', sans-serif; */
+    background-color: #f0f2f5; /* Màu nền tổng thể, có thể thay đổi */
+    color: var(--text-dark);
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: var(--primary-green); /* Màu xanh lá cây của navbar */
+    color: var(--text-light);
+    height: 60px; /* Chiều cao cố định cho navbar */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.navbar .logo {
+    font-weight: bold;
+    font-size: 24px;
+    letter-spacing: 1px;
+}
+
+.nav-links ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.nav-links ul li {
+    margin-left: 30px;
+}
+
+.nav-links ul li a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.nav-links ul li a:hover {
+    color: #e0e0e0;
+}
+
+/* Main Content and Grid Layout */
+.main-content {
+    padding: 40px;
+    max-width: 1200px; /* Giới hạn chiều rộng nội dung */
+    margin: 20px auto; /* Căn giữa */
+}
+
+.grid-container {
+    display: grid;
+    /* Định nghĩa các cột và hàng. Có thể điều chỉnh để khớp chính xác với bố cục của bạn. */
+    /* Đây là một ví dụ dựa trên cảm quan ảnh */
+    grid-template-columns: repeat(3, 1fr); /* 3 cột bằng nhau */
+    grid-template-rows: auto auto auto; /* 3 hàng với chiều cao tự động */
+    gap: 20px; /* Khoảng cách giữa các item */
+}
+
+.grid-item {
+    background-color: var(--light-green); /* Màu xanh lá cây cho các card */
+    border-radius: var(--card-radius);
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: flex; /* Dùng flexbox cho nội dung bên trong item nếu cần */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-light); /* Màu chữ mặc định cho các card */
+    position: relative; /* Cho các icon góc */
+    overflow: hidden; /* Đảm bảo hình ảnh tròn góc */
+}
+
+/* Kích thước và vị trí của từng item theo hình ảnh */
+.large-left {
+    grid-column: span 1; /* Chiếm 1 cột */
+    grid-row: span 2; /* Chiếm 2 hàng */
+    min-height: 400px; /* Chiều cao tối thiểu */
+}
+
+.medium-center {
+    grid-column: span 1;
+    min-height: 250px;
+    padding: 0; /* Loại bỏ padding để ảnh tràn ra */
+}
+
+.medium-right {
+    grid-column: span 1;
+    min-height: 250px;
+    padding: 0; /* Loại bỏ padding để ảnh và placeholder text sát nhau */
+    background-color: var(--light-green); /* Đảm bảo màu nền */
+    border-radius: var(--card-radius);
+    overflow: hidden; /* Đảm bảo ảnh bo góc */
+    gap: 15px;
+}
+.medium-right .item-image {
+    width: 90%;
+    height: auto;
+    display: block; /* Loại bỏ khoảng trắng dưới ảnh */
+    border-top-left-radius: var(--card-radius); /* Bo góc trên */
+    border-top-right-radius: var(--card-radius);
+    object-fit: cover; /* Đảm bảo ảnh không bị méo */
+}
+.medium-right .text-placeholder {
+    width: 80%;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 5px;
+    margin: 10px auto;
+}
+
+
+.small-bottom-left {
+    grid-column: span 1;
+    min-height: 150px;
+}
+
+.small-bottom-center {
+    grid-column: span 1;
+    min-height: 150px;
+    text-align: center;
+    position: relative;
+    padding: 20px;
+}
+.small-bottom-center .small-text {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+.small-bottom-center .arrow-icon {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+
+.large-bottom-right {
+    grid-column: span 1;
+    min-height: 150px;
+    padding: 20px;
+    justify-content: space-between; /* Đẩy h2 lên trên, social links xuống dưới */
+    align-items: flex-start; /* Căn trái nội dung */
+}
+.large-bottom-right h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    align-self: flex-start; /* Căn trái riêng tiêu đề */
+}
+.large-bottom-right .social-links {
+    display: flex;
+    flex-wrap: wrap; /* Cho phép xuống dòng nếu cần */
+    gap: 10px;
+    align-self: flex-start; /* Căn trái nhóm nút */
+}
+.social-btn {
+    background-color: rgba(255, 255, 255, 0.2); /* Nền nút trong suốt */
+    color: var(--text-light);
+    border: 1px solid rgba(255, 255, 255, 0.5); /* Viền nút */
+    padding: 8px 15px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+.social-btn:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    border-color: var(--text-light);
+}
+
+
+/* Images within grid items */
+.item-image {
+    width: 100%;
+    height: 100%; /* Chiếm toàn bộ không gian của div cha */
+    object-fit: cover; /* Đảm bảo hình ảnh không bị biến dạng và lấp đầy khung */
+    border-radius: var(--card-radius); /* Bo tròn góc cho ảnh */
+    display: block; /* Loại bỏ khoảng trắng bên dưới ảnh */
+}
+
+/* Specific styling for images based on the layout */
+.medium-center .item-image {
+    border-radius: var(--card-radius); /* Ảnh ở giữa cũng bo góc */
+}
+
+
+/* Các quy tắc CSS cho nút bạn cung cấp */
+/* Tôi đặt trong .btn-container để minh họa, bạn có thể áp dụng vào nút bạn muốn */
+.btn-container button {
+    border: 1px solid black; /* Đã sửa lỗi ký tự không hợp lệ */
+    width: auto;
+    height: auto;
+    color: blueviolet; /* Đã sửa lỗi ký tự không hợp lệ */
+    font-size: 18px;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 5px;
+    background-color: #fff; /* Thêm màu nền mặc định cho nút */
+    cursor: pointer;
+    transition: all 0.3s ease; /* Thêm transition cho tất cả các thuộc tính */
+}
+
+.btn-container:hover button {
+    background-color: #609cc4; /* Đã sửa lỗi ký tự không hợp lệ, giả sử là màu xanh dương */
+    color: #fff; /* Đã sửa lỗi ký tự không hợp lệ */
+    transform: translateY(-8px);
+    width: 20%; /* Cẩn thận với việc thay đổi width từ auto sang % khi hover */
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2); /* Đã sửa lỗi ký tự không hợp lệ */
+    /* cursor: pointer; (Đã có ở trên, không cần lặp lại) */
+}
+
+
+/* Media Queries cho Responsive */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 15px 20px;
+    }
+    .navbar .logo {
+        margin-bottom: 10px;
+    }
+    .nav-links ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .nav-links ul li {
+        margin: 5px 15px;
+    }
+
+    .main-content {
+        padding: 20px;
+    }
+
+    .grid-container {
+        grid-template-columns: 1fr; /* Một cột duy nhất trên màn hình nhỏ */
+        gap: 15px;
+    }
+
+    /* Các item sẽ chiếm toàn bộ chiều rộng */
+    .grid-item {
+        grid-column: span 1 !important;
+        grid-row: auto !important;
+        min-height: unset; /* Bỏ min-height cứng nhắc */
+    }
+
+    /* Điều chỉnh lại padding cho các item cụ thể nếu cần */
+    .medium-center, .medium-right {
+        padding: 0;
+    }
+    .large-left, .small-bottom-left, .small-bottom-center, .large-bottom-right {
+        padding: 20px;
+    }
+
+    .large-bottom-right h2 {
+        font-size: 24px;
+    }
+    .large-bottom-right .social-links {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 10px 15px;
+    }
+    .navbar .logo {
+        font-size: 20px;
+    }
+    .nav-links ul li {
+        margin: 5px 10px;
+        font-size: 12px;
+    }
+    .main-content {
+        padding: 15px;
+    }
+}
